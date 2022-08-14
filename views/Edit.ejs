@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Web</title>
+</head>
+
+<body>
+    <div class="Title" style="align-items:center;margin-top:50px;height:400px;display:flex;justify-content:center">
+        <div style="border:1px solid;padding:10px;border-radius:10px;">
+            <form method="Post" action="/update/<%=data._id%>">
+                <div>
+                    <label>Add Title:</label>
+                    <input value="<%=data.Title%>" style="text-decoration:none;border-top:none;border-left:none;border-right:none" name="Title"
+                    type="name"/>
+                </div>
+                <div>
+                    <textarea  name="Description" rows="5" cols="60"
+                        style="margin-top:20px;margin-bottom :20px;padding:10px;" type="name"
+                        placeholder="type Your Blog Here..."><%= data.Description  %> </textarea>
+                </div>
+                <div>
+                    <input type="file" name="image" value="Upload Thumbnile" />
+                </div>
+                <div style="margin-top:20px;margin-left:500px;">
+                    <button type="submit"
+                        style="background-color:rgb(135, 135, 235);padding:10px;border-radius:10px;color:white;">Update</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>
