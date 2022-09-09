@@ -11,19 +11,19 @@
 <body>
     <div class="Title" style="align-items:center;margin-top:50px;height:400px;display:flex;justify-content:center">
         <div style="border:1px solid;padding:10px;border-radius:10px;">
-            <form method="Post" action="/update/<%=data._id%>">
+            <form enctype="multipart/form-data" method="POST" action="/update/<%=data._id%>">
                 <div>
                     <label>Add Title:</label>
-                    <input value="<%=data.Title%>" style="text-decoration:none;border-top:none;border-left:none;border-right:none" name="Title"
+                    <input value="<%=data.Title%>" style="text-decoration:none;border-top:none;border-left:none;border-right:none" name="newTitle"
                     type="name"/>
                 </div>
                 <div>
-                    <textarea  name="Description" rows="5" cols="60"
+                    <textarea  name="newDescription" rows="5" cols="60"
                         style="margin-top:20px;margin-bottom :20px;padding:10px;" type="name"
-                        placeholder="type Your Blog Here..."><%= data.Description  %> </textarea>
+                        placeholder="type Your Blog Here..."><%= data.Description %> </textarea>
                 </div>
                 <div>
-                    <input type="file" name="image" value="Upload Thumbnile" />
+                    <input type="file" name="newimage"  />
                 </div>
                 <div style="margin-top:20px;margin-left:500px;">
                     <button type="submit"

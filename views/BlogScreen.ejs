@@ -14,7 +14,7 @@
   grid-gap: 10px;margin-left:20px;margin-bottom:20px;">
      <% for(var i=0;i<data.length;i++) {%>
         <div class="card" style="width:18rem;justify-content:center;margin-top:20px;">
-            <img src="./images/lanscape.jpeg" alt="Italian Trulli" >
+                <img src="./images/<%=data[i].image%>" alt="Blog Thumbnile" >
             <div class="card-body">
                 <h5 class="card-title"><%= data[i].Title %> </h5>
                 <p class="card-text" style=" overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;line-height:16px;max-height:40px"><%= data[i].Description%> </p>

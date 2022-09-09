@@ -4,17 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Blog Web</title>
 </head>
 <body>
     <div style="align-items:center;justify-content:center;">
-        <h1 style="margin-left:500px;color:blue">Welcome To My Blog World</h1>
+        <h1 style="margin-left:500px;color:blue;" >Welcome To My Blog World</h1>
+        <form action="logout" method="POST">
+            <input type="submit" value="logout" />
+        </form>
+
         <a href="/all-post" style="margin-left:900px;color:white;text-decoration:none;padding:10px;border-radius:10px;background-color:rgb(101, 101, 238)">All Posts</a>
     </div>
    
     <div class="Title" style="align-items:center;margin-top:50px;height:400px;display:flex;justify-content:center" >
         <div style="border:1px solid;padding:10px;border-radius:10px;">
-            <form method="POST" action="/create-blog">
+            <form enctype="multipart/form-data" method="POST" action="/create-blog" >
                 <div>
                     <label>Add Title:</label>
                     <input style="text-decoration:none;border-top:none;border-left:none;border-right:none" name="Title" type="name" />
@@ -23,7 +28,7 @@
                     <textarea name="Description" rows = "5" cols = "60"   style="margin-top:20px;margin-bottom :20px;padding:10px;" type="name" placeholder="type Your Blog Here..." ></textarea>
                </div>
                 <div>
-                    <input type="file" name="image" value="Upload Thumbnile"/>
+                    <input type="file" name="image" />
                 </div>
                 <div style="margin-top:20px;margin-left:500px;">
                     <button type="submit" style="background-color:rgb(135, 135, 235);padding:10px;border-radius:10px;color:white;">Upload</button>
