@@ -14,6 +14,11 @@ const jwt = require("jsonwebtoken");
 const cookie = require("cookie");
 require("dotenv").config();
 
+const AddPost = require('../Controllers/AddPost');
+const AllPost = require('../Controllers/AllPost');
+const DeletePost = require('../Controllers/DeletePost');
+const EditPost = require('../Controllers/EditPost');
+
 const unlinkAsync = promisify(fs.unlink)
 
 
@@ -38,72 +43,18 @@ router.get('/Edit/:id',(req,res)=>{
    BlogSchema.findOne({_id:req.params.id},(err,docs)=>{
       if(err){
          console.log(err);
-      }else{
-         res.render('Edit',{data:docs})
+      }else{   
+         res.status(200).json({data:docs})
+         // res.render('Edit',{data:docs})
          console.log(docs);
       }
    })
 })
-router.post('/update/:id',upload.single('newimage'),(req,res)=>{
-    try {
-    fs.unlinkSync("C:/Node Projects/CRUD/public/images/"+req.body.image);
-    console.log("File is deleted.");
-} catch (error) {
-    console.log(error);
-}
-    BlogSchema.findByIdAndUpdate(req.params.id,{
-      Title:req.body.newTitle,
-      Description:req.body.newDescription,
-      image:req.file.originalname+"_"+path.extname(req.file.originalname)
-    }).then((docs)=>{
-        //res.render('/all-Post');
-        res.send("succesfully updated");
-    }).catch(err => {
-       res.status(500).send(err.message);
-    })
-});
-router.post('/create-blog',upload.single('image'),async(req,res)=>{
-   const blog = new BlogSchema({
-      Title:req.body.Title,
-      Description:req.body.Description,
-      image:req.file.originalname+"_"+path.extname(req.file.originalname)
-   });
-   console.log(req.file);
-   await blog.save();
-   res.render('Home',{message:"Successfully Uploaded"});
-   // res.send(blog);
-   //console.log(blog);
-})
+router.post('/update/:id',upload.single('newimage'),EditPost);
+router.post('/create-blog',upload.single('image'),AddPost)
+router.get('/all-post',AllPost);
+router.get('/delete/:id',DeletePost)
 
-router.get('/all-post',(req,res)=>{
-   BlogSchema.find((err,docs)=>{
-      if(err){
-         console.log(err);
-      }else{
-         console.log(docs);
-         res.render('BlogScreen',{data:docs});
-      }
-   });
-});
-
-
-router.get('/delete/:id', (req,res)=>{
-   BlogSchema.findByIdAndDelete(req.params.id).then(async docs=>{
-      if(!docs){
-         res.status(404);
-      }else{
-         console.log(docs);
-         try{
-         await fs.unlinkSync("C:/Node Projects/CRUD/public/images/"+docs.image);
-         }catch(err){
-            console.log(err);
-         }
-         res.redirect('/all-post');
-      }
-   }).catch(error=>{
-      console.log(error);
-   })
-})
 router.get('/signup', function(req, res, next) {
   res.render("SignUp");
 });
