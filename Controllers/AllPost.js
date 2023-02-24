@@ -5,7 +5,8 @@ const AllPost = (req,res)=>{
          console.log(err);
       }else{
          console.log(docs);
-         res.render('BlogScreen',{data:docs});
+         // res.render('BlogScreen',{data:docs});
+         res.status(200).send(docs);
       }
    });
 }

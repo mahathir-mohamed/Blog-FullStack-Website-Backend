@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var ejs = require('ejs');
 var confiq=require('./confiq/config');
+var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var AuthRouter = require('./routes/users');
@@ -20,6 +21,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors({
+    origin: '*'
+}));
 
 app.use('/', indexRouter);
 // app.use('/Auth', AuthRouter);
