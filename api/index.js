@@ -4,11 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var ejs = require('ejs');
-var confiq=require('./confiq/config');
+var confiq=require('../confiq/config');
 var cors = require('cors');
 
-var indexRouter = require('./routes/index');
-var AuthRouter = require('./routes/users');
+var indexRouter = require('../routes/index');
+var AuthRouter = require('../routes/users');
 
 var app = express();
 
