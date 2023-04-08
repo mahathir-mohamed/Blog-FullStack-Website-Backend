@@ -4,11 +4,12 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var ejs = require('ejs');
-var confiq=require('../confiq/config');
+var confiq=require('./confiq/config');
 var cors = require('cors');
 
-var indexRouter = require('../routes/index');
-var AuthRouter = require('../routes/users');
+var indexRouter = require('./routes/index');
+// var AuthRouter = require('./routes/users');
+var authRouter = require('./routes/users')
 
 var app = express();
 
@@ -26,6 +27,7 @@ app.use(cors({
 }));
 
 app.use('/', indexRouter);
+app.use('/auth',authRouter);
 // app.use('/Auth', AuthRouter);
 
 // catch 404 and forward to error handler

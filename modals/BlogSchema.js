@@ -10,10 +10,15 @@ const blogschema=mongoose.Schema({
         type:String,
         required:true
     },
-    image:{
-        type:String
+    Image:[
+        {url:String,
+        id:String}
+    ],
+    Author:{
+        ref:"User",
+        type:mongoose.Types.ObjectId
     }
 
-})
+},{ timestamps: true })
 const BlogSchema=mongoose.model('BlogSchema',blogschema);
 module.exports = BlogSchema;

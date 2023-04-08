@@ -1,4 +1,4 @@
-const BlogSchema = require('../modals/BlogSchema');
+const BlogSchema = require('../../modals/BlogSchema');
 
 const DeletePost =  (req,res)=>{
    BlogSchema.findByIdAndDelete(req.params.id).then(async docs=>{

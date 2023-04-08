@@ -1,7 +1,7 @@
-const BlogSchema = require('../modals/BlogSchema');
+const BlogSchema = require('../../modals/BlogSchema');
 const EditPost = (req,res)=>{
     try {
-    fs.unlinkSync("C:/Node Projects/CRUD/public/images/"+req.body.image);
+    fs.unlinkSync("public/images"+req.body.image);
     console.log("File is deleted.");
 } catch (error) {
     console.log(error);
