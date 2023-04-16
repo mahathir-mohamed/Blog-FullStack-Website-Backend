@@ -30,7 +30,7 @@ const unlinkAsync = promisify(fs.unlink)
 
 
 router.post('/update/:id',upload.array('newimage'),EditPost);
-router.post('/create-blog/:id',upload.array('image'),AddPost,MyBlog);
+router.post('/create-blog/:id',upload.array('Image'),AddPost,MyBlog);
 router.get('/all-post',AllPost);
 router.get('/delete/:id',DeletePost);
 router.put('/likes/:id',LikedBlogs);

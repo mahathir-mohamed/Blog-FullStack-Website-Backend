@@ -6,7 +6,7 @@ const cloudinary = require('../../ImageHandlingFolder/CloudinaryUpload');
 const AddPost = async(req,res,next)=>{
    const uploader = async (path)=>await cloudinary.uploads(path,'Images');
     const url = [];
-   //  console.log(req.files);
+    console.log(req.files);
     const files = req.files
 
     for(const file of files){
