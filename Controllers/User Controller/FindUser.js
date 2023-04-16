@@ -10,7 +10,7 @@ const FindUser = async (req,res)=>{
         }else{
            res.status(202).json({msg:"Sorry user not found"}) 
         }
-    })
+    });
 }
 
 module.exports = FindUser

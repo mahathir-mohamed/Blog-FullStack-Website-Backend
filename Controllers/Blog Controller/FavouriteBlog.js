@@ -5,13 +5,15 @@ const FavouriteBlog = async(req,res)=>{
     const FavouriteBlog = user.findOne({_id:req.body.user_id},(err,docs)=>{
         if(err){
             res.status(400).json({msg:"Something went wrong"})
-        }
-        if(docs){
-            res.status(200).json({result:docs.likes});
+        }else if(docs){
+            if(docs.likes){
+              res.status(200).json({result:docs.likes});
+            }else{
+            res.status(200).json({msg:"sorry you did not have any favourite list"});}
         }else{
-            res.status(200).json({msg:"sorry you did not have any favourite list"});
+           res.status(200).json({msg:"there is no user found"}); 
         }
-    }).populate("likes.BlogId")
+    }).populate("likes.BlogId").populate({path:'likes.BlogId',populate:{path:"Author"}})
 }
 
 module.exports = FavouriteBlog;

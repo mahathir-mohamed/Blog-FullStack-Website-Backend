@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require('fs');
 const cloudinary = require('../../ImageHandlingFolder/CloudinaryUpload');
 
-const AddPost = async(req,res)=>{
+const AddPost = async(req,res,next)=>{
    const uploader = async (path)=>await cloudinary.uploads(path,'Images');
     const url = [];
    //  console.log(req.files);
@@ -24,9 +24,8 @@ const AddPost = async(req,res)=>{
    });
    // console.log(url);
    await blog.save();
-   // console.log(blog);   
-   // console.log(blog._id);
-   res.status(200).json({msg:"Successfully Uploaded",id:blog._id})
+   req.blog_id = blog._id;
+   next();
    
 }  
 

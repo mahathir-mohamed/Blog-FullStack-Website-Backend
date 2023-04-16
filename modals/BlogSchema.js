@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const Comments  = require("./CommentSchema");
 
 const blogschema=mongoose.Schema({
     Title:{
@@ -17,8 +18,12 @@ const blogschema=mongoose.Schema({
     Author:{
         ref:"User",
         type:mongoose.Types.ObjectId
-    }
-
+    },
+    Comments:[{
+        CommentId:{
+          ref:Comments,
+          type:mongoose.Types.ObjectId}
+        }],
 },{ timestamps: true })
-const BlogSchema=mongoose.model('BlogSchema',blogschema);
+const BlogSchema=mongoose.model('Blog',blogschema);
 module.exports = BlogSchema;

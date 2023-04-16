@@ -9,7 +9,8 @@ var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 // var AuthRouter = require('./routes/users');
-var authRouter = require('./routes/users')
+var authRouter = require('./routes/users');
+var CommentRouter = require('./routes/Comment');
 
 var app = express();
 
@@ -25,9 +26,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors({
     origin: '*'
 }));
+// const fileUpload = require('express-fileupload');
+// app.use(fileUpload()); 
 
 app.use('/', indexRouter);
 app.use('/auth',authRouter);
+app.use('/Comment',CommentRouter);
 // app.use('/Auth', AuthRouter);
 
 // catch 404 and forward to error handler

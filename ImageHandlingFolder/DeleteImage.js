@@ -2,7 +2,7 @@ const cloudinary = require('cloudinary');
 const ProductModel = require('../Modals/Product');
 
 
-const DeleteImage = (req,res,next)=>{
+const DeleteImage = (req,res)=>{
         ProductModel.findOne({_id:req.params.id},(err,docs)=>{
         if(err){
             console.log(err);
@@ -15,9 +15,9 @@ const DeleteImage = (req,res,next)=>{
                cloudinary.uploader.destroy(ImageId)
             }
             console.log(docs.Image[0].id);
-            next();
+            res.send("successfully deleted")
             }else{
-                next();
+                res.send("not deleted yet")
             }
         }
     })

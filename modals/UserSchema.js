@@ -1,5 +1,6 @@
 const express= require('express');
 const mongoose= require('mongoose');
+const blog = require('./BlogSchema');
 
 const User = new mongoose.Schema({
     Email:{
@@ -13,16 +14,14 @@ const User = new mongoose.Schema({
     },
     Blogs:[{
         BlogId:{
-          type:mongoose.Schema.Types.ObjectId,
-          ref: "BlogSchema"
-        }
+        type:mongoose.Schema.Types.ObjectId,
+        ref: blog
+    }
     }],
     likes:[{
-        BlogId:{
-          type:mongoose.Schema.Types.ObjectId,
-          ref: "BlogSchema"
-        }}],
-     Image:[
+        BlogId:{type:mongoose.Schema.Types.ObjectId,ref: blog}
+    }],
+    Image:[
         {url:String,
         id:String}
     ],
