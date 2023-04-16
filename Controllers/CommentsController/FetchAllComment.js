@@ -10,6 +10,6 @@ const FetchAllComment = async (req,res)=>{
         }else{
             res.status(202).json({msg:"Comments Not Found"})
         }
-    }).populate('Comments.CommentId')
+    }).populate("Comments.CommentId").populate({path:"Comments.CommentId",populate:{path:"User"}})
 }
 module.exports = FetchAllComment;

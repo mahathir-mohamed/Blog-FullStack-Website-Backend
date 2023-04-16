@@ -2,10 +2,8 @@ const mongoose = require('mongoose');
 
 const Comment = mongoose.Schema({
     User:{
-        type:String
-    },
-    Image:{
-        type:String
+        ref:"User",
+        type:mongoose.Types.ObjectId
     },
     Comment:{
         type:String

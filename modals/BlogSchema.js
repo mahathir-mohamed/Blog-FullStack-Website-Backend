@@ -21,7 +21,7 @@ const blogschema=mongoose.Schema({
     },
     Comments:[{
         CommentId:{
-          ref:Comments,
+          ref:"Comments",
           type:mongoose.Types.ObjectId}
         }],
 },{ timestamps: true })

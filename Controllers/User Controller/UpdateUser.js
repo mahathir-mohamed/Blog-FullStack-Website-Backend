@@ -12,7 +12,7 @@ const UpdateUser = async (req,res)=>{
         if(err){
             res.status(404).json({msg:"Something went wrong"})
         }
-        if(docs){
+        if(docs){   
             res.status(200).json({msg:"User successfully updated",result:docs})
         }else{
             res.status(202).json({msg:"User not found"})

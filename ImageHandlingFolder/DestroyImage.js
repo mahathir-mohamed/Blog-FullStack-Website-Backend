@@ -23,7 +23,7 @@ const DestroyImage =  async(req,res,next)=>{
              res.status(400).json({msg:"Something went wrong"})
            }
            if(docs){
-            if(req.files && url.length>0){
+            if(url.length > 0){
                 // console.log(docs)
                 for(let i=0;i<docs.Image.length;i++){
                     cloudinary.uploader.destroy(docs.Image[i].id)

@@ -5,7 +5,6 @@ const AddComment = async(req,res,next)=>{
 
     const NewComment = new CommentSchema({
         User:User,
-        Image:Image,
         Comment:Comment
     })
     await NewComment.save();
