@@ -4,8 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var ejs = require('ejs');
-var confiq=require('./confiq/config');
+// var confiq=require('./confiq/config');
 var cors = require('cors');
+
 
 var indexRouter = require('./routes/index');
 // var AuthRouter = require('./routes/users');
@@ -37,6 +38,8 @@ app.use('/Comment',CommentRouter);
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
+
 
 // error handler
 app.use(function(err, req, res, next) {
