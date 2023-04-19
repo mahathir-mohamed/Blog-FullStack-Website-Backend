@@ -24,15 +24,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors({
-    origin:'https://blog-full-stack-website-frontend.vercel.app'
-}));
+app.use(cors({origin:"*"}));
 // const fileUpload = require('express-fileupload');
 // app.use(fileUpload()); 
 
-// app.use('/', indexRouter);
-// app.use('/auth',authRouter);
-// app.use('/Comment',CommentRouter);
+app.use('/', indexRouter);
+app.use('/auth',authRouter);
+app.use('/Comment',CommentRouter);
 // app.use('/Auth', AuthRouter);
 
 // catch 404 and forward to error handler
