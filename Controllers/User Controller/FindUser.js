@@ -6,11 +6,12 @@ const FindUser = async (req,res)=>{
             console.log(err)
         }
         if(docs){
-            res.status(200).json({msg:"Succsfully user found",result:docs})
+            res.status(200).json({msg:"Succesfully user found",result:docs})
         }else{
            res.status(202).json({msg:"Sorry user not found"}) 
         }
-    });
+    }).populate("Blogs.BlogId");
+
 }
 
 module.exports = FindUser

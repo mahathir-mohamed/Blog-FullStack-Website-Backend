@@ -25,6 +25,9 @@ const FavouriteBlog = require("../Controllers/Blog Controller/FavouriteBlog");
 const MyBlog = require('../Controllers/Blog Controller/myBlog');
 const FindMyBlog = require('../Controllers/Blog Controller/FindMyBlog');
 const FindPost = require("../Controllers/Blog Controller/FindPost")
+const RemoveMyBlog = require('../middlewares/RemoveMyBlog');
+const RemovelikedBlog = require("../middlewares/RemovelikedBlog");
+const RecommentBlog = require("../Controllers/Blog Controller/RecommentBlog");
 
 const unlinkAsync = promisify(fs.unlink)
 
@@ -32,11 +35,12 @@ const unlinkAsync = promisify(fs.unlink)
 router.post('/update/:id',upload.array('newimage'),EditPost);
 router.post('/create-blog/:id',upload.array('Image'),AddPost,MyBlog);
 router.get('/all-post',AllPost);
-router.get('/delete/:id',DeletePost);
+router.post('/delete/:id',RemoveMyBlog,RemovelikedBlog,DeletePost);
 router.put('/likes/:id',LikedBlogs);
 router.put('/RemoveLikes/:id',RemoveLikedBlogs);
 router.post('/Favourite',FavouriteBlog);
 router.get("/MyBlogs/:id",FindMyBlog);
 router.get("/FindPost/:id",FindPost);
+router.get("/RecommentPost/:id",RecommentBlog)
 
 module.exports = router;
