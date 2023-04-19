@@ -18,19 +18,22 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors({
-    origin: 'https://bloggers-world.onrender.com'
+    origin:'https://blog-full-stack-website-frontend.vercel.app'
 }));
+// const fileUpload = require('express-fileupload');
+// app.use(fileUpload()); 
 
-
-app.use('/', indexRouter);
-app.use('/auth',authRouter);
-app.use('/Comment',CommentRouter);
+// app.use('/', indexRouter);
+// app.use('/auth',authRouter);
+// app.use('/Comment',CommentRouter);
+// app.use('/Auth', AuthRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -45,7 +48,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  // res.render('error');
+//   res.render('error');
 });
 
 module.exports = app;
