@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors({
-    origin: '*'
+    origin: 'https://bloggers-world.onrender.com'
 }));
 // const fileUpload = require('express-fileupload');
 // app.use(fileUpload()); 
