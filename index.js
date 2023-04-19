@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var ejs = require('ejs');
-// var confiq=require('./confiq/config');
+var confiq=require('./confiq/config');
 var cors = require('cors');
 
 
