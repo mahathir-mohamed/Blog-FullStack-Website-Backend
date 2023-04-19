@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors({
-    origin: 'https://vercel.com/mahathir-mohamed/blog-full-stack-website-frontend'
+    origin:'https://blog-full-stack-website-frontend.vercel.app'
 }));
 // const fileUpload = require('express-fileupload');
 // app.use(fileUpload()); 
