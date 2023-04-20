@@ -2,7 +2,7 @@ const User = require("../modals/UserSchema");
 const path = require("path");
 const fs = require('fs');
 const cloudinary2 = require('../ImageHandlingFolder/CloudinaryUpload');
-const cloudinary = require('cloudinary');
+const cloudinary = require('cloudinary').v2;
 
 const DestroyImage =  async(req,res,next)=>{
         // console.log(req.params.id);
@@ -10,7 +10,7 @@ const DestroyImage =  async(req,res,next)=>{
     if(req.files){
          const uploader = async (path)=>await cloudinary2.uploads(path,'Images');
          const files = req.files
-        //  console.log(req.files); 
+         console.log(req.files); 
          for(const file of files){
         const {path}=file
         const newPath = await uploader(path)
