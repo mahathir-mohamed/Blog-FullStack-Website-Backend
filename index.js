@@ -55,7 +55,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors({
-  origin:"https://api.cloudinary.com/v1_1/doiff4svr/image/upload"
+  origin:["https://api.cloudinary.com/v1_1/doiff4svr/image/upload","https://192.168.1.12:3000","https://blog-full-stack-website-frontend.vercel.app"]
 }));
 // const fileUpload = require('express-fileupload');
 // app.use(fileUpload()); 
