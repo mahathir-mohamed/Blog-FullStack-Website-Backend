@@ -6,7 +6,10 @@ const cloudinary = require('../../ImageHandlingFolder/Cloudinary');
 
 const AddPost = async(req,res,next)=>{
    if(req.body.Image){
-   const uploader = await cloudinary.uploader.upload(req.body.Image,"Blog");
+   const uploader = await cloudinary.uploader.upload(req.body.Image,{
+      resource_type:"auto",
+      folder:"Blog"
+   });
    console.log(uploader);
    const blog = new BlogSchema({
       Title:req.body.Title,   
