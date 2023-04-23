@@ -5,17 +5,22 @@ const cloudinary = require('../ImageHandlingFolder/Cloudinary');
 // const cloudinary = require('cloudinary').v2;
 
 const DestroyImage =  async(req,res,next)=>{
+    // console.log("hi")
         const DestroyImage =  User.findOne({_id:req.params.id},async (err,docs)=>{
            if(err){
              res.status(400).json({msg:"Something went wrong"})
            }
            if(docs){
-            if(req.body.Image){
+            if(req.files){
                 // console.log(docs)
                 for(let i=0;i<docs.Image.length;i++){
                     cloudinary.uploader.destroy(docs.Image[i].id)
                 }
-                const uploader = await cloudinary.uploader.upload(req.body.Image,'Images');
+                const uploader = await cloudinary.uploader.upload(req.files[0].path,{resource_type:"auto",
+               folder:"Blog"});
+            if(uploader.url){
+                fs.unlinkSync(req.files[0].path);
+            }
                req.Image = {
                   url:uploader.secure_url,
                   id:uploader.public_id
