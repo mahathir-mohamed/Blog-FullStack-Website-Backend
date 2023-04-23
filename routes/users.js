@@ -13,7 +13,7 @@ const DestroyImage = require("../ImageHandlingFolder/DestroyImage");
 
 /* GET users listing. */
 router.post('/create-account',upload.array('Image'),AddUser)
-router.post('/auth-account',LoginUser);
+router.post('/auth-account',LoginUser); 
 router.post('/Check-user',TokenVerify); 
 router.get("/AdminBlog/:id",AdminBlog);
 router.post("/AddBlog/:id",AppendBlog);

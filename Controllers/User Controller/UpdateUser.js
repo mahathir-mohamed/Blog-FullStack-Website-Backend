@@ -3,8 +3,7 @@ const User = require('../../modals/UserSchema');
 
 
 const UpdateUser = async (req,res)=>{
-//    console.log(req.files);
-  const Updateuser =  User.findByIdAndUpdate({_id:req.params.id},{
+  User.findByIdAndUpdate({_id:req.params.id},{
         Username:req.body.Username,
         Email:req.body.Email,
         Image:req.Image

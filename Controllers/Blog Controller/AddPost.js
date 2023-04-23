@@ -5,19 +5,8 @@ const fs = require('fs');
 const cloudinary = require('../../ImageHandlingFolder/Cloudinary');
 
 const AddPost = async(req,res,next)=>{
-   // const uploader = async (path)=>await cloudinary.uploads(Image,'Blog Images');
-   // console.log(req.body.Image);
-   const uploader = await cloudinary.uploader.upload(req.body.Image,"Blog Images");
-   //  const url = [];  
-   //  console.log(req.files);
-   //  const files = req.files
-
-   //  for(const file of files){
-   //      const {path}=file
-   //      const newPath = await uploader(path)
-   //      url.push(newPath);
-   //      fs.unlinkSync(path)
-   //  }
+   if(req.body.Image){
+   const uploader = await cloudinary.uploader.upload(req.body.Image,"Blog");
    console.log(uploader);
    const blog = new BlogSchema({
       Title:req.body.Title,   
@@ -29,15 +18,12 @@ const AddPost = async(req,res,next)=>{
       Author:req.body.Author,
       createdAt: new Date(),
    });
-   // console.log(url);
-   // if(req.files.length > 0){
       await blog.save();
       req.blog_id = blog._id;
       next();
-      // res.send(uploader)   
-   //  }else{
-   //       res.status(202).json({msg:"There is no image selected to upload!!!"})
-   //  }
+   }else{
+      res.status(202).json({msg:"Please select thumbnail image to continue!!!"})
+   }
    
 }  
 
