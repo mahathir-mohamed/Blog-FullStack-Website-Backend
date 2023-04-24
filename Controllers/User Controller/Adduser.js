@@ -8,17 +8,17 @@ const cloudinary = require('../../ImageHandlingFolder/Cloudinary');
 const AddUser = async (req,res)=>{
   console.log(req.files);
   try{
-  //   if(req.files.length > 0){
-  //  const uploader = await cloudinary.uploader.upload(req.files[0].path,{resource_type:"auto",
-  //           folder:"Blog"});
-  if(req.body.Image){
-   const uploader = await cloudinary.uploader.upload(req.body.Image,{
-      resource_type:"auto",
-      folder:"Blog"
-   });
-    // if(uploader.url){
-    //    fs.unlinkSync(req.files[0].path);
-    // }
+    if(req.files){
+   const uploader = await cloudinary.uploader.upload("public/images/"+req.files.sampleFile.name,{resource_type:"auto",
+            folder:"Blog"});
+  // if(req.body.Image){
+  //  const uploader = await cloudinary.uploader.upload(req.body.Image,{
+  //     resource_type:"auto",
+  //     folder:"Blog"
+  //  });
+    if(uploader.url){
+       fs.unlinkSync("public/images/"+req.files.sampleFile.name);
+    }
   //  const files = req.files
   //   for(const file of files){
   //       const {path}=file
@@ -43,7 +43,7 @@ const AddUser = async (req,res)=>{
      }
      });
      console.log(User);
-     User.save();
+    //  User.save();
      res.status(200).json({msg:"Succesfully account created"})
   }).catch((err)=>{
     console.error(err);

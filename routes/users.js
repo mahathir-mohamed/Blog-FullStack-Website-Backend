@@ -10,9 +10,10 @@ const AppendBlog = require('../Controllers/User Controller/AppendBlog');
 const FindUser = require("../Controllers/User Controller/FindUser");
 const UpdateUser = require("../Controllers/User Controller/UpdateUser");
 const DestroyImage = require("../ImageHandlingFolder/DestroyImage");
+const fileUpload = require("../ImageHandlingFolder/fileUpload")
 
 /* GET users listing. */
-router.post('/create-account',upload.array('Image'),AddUser)
+router.post('/create-account',fileUpload,AddUser)
 router.post('/auth-account',LoginUser); 
 router.post('/Check-user',TokenVerify); 
 router.get("/AdminBlog/:id",AdminBlog);
