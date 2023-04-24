@@ -42,6 +42,15 @@ router.put('/RemoveLikes/:id',RemoveLikedBlogs);
 router.post('/Favourite',FavouriteBlog);
 router.get("/MyBlogs/:id",FindMyBlog);
 router.get("/FindPost/:id",FindPost);
-router.get("/RecommentPost/:id",RecommentBlog)
+router.get("/RecommentPost/:id",RecommentBlog);
+router.post("/image-upload",async(req,res)=>{
+   if(req.files){
+    console.log(req.files);
+    console.log("Successfully uploaded");
+    res.status(200).json("sucess")
+   }else{
+     res.status(202).json({msg:"no file found"})
+   } 
+})
 
 module.exports = router;

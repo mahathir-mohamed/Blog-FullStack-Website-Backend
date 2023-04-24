@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var ejs = require('ejs');
 var confiq=require('./confiq/config');
-var cors = require('cors');
+var cors = require('cors'); 
 
 
 
@@ -17,9 +17,9 @@ var authRouter = require('./routes/users');
 var CommentRouter = require('./routes/Comment');
 
 var app = express();
-// const fileupload = require('express-fileupload'); 
+const fileupload = require('express-fileupload'); 
+app.use(fileupload());
 
-// app.use(fileupload({useTempFiles: true}))
 // app.use(function(req, res, next) {
 //     var oneof = false;
 //     if(req.headers.origin) {
