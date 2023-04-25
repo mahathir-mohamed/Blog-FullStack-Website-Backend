@@ -10,7 +10,7 @@ const fileUpload = async (req,res,next)=>{
   }
   imageFile = req.files.Image;
 //   uploadPath = `public/images/${imageFile.name}`;
-    var uploadPath = "./" + imageFile.name;
+  uploadPath = "./" + imageFile.name
   imageFile.mv(uploadPath, function(err) {
     if(err)
       console.log(err);
