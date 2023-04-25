@@ -1,7 +1,8 @@
 const fileUpload = async (req,res,next)=>{
   // console.log(req.files)
   if (!req.files || Object.keys(req.files).length === 0) {
-    return res.status(400).send('No files were uploaded.');
+    next();
+    // return res.status(400).send('No files were uploaded.');
   }
   const imageFile = req.files.Image;
   const uploadPath = "public/images/" + imageFile.name;
