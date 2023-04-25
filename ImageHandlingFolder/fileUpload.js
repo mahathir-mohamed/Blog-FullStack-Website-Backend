@@ -9,7 +9,7 @@ const fileUpload = async (req,res,next)=>{
     return res.status(400).send('No files were uploaded.');
   }
   imageFile = req.files.Image;
-  uploadPath = 'public/images';
+  uploadPath = `public/images/${imageFile.name}`;
   imageFile.mv(uploadPath, function(err) {
     if(err)
       console.log(err);
