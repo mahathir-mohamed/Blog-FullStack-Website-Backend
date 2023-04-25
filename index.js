@@ -19,7 +19,9 @@ var CommentRouter = require('./routes/Comment');
 var app = express();
 const fileupload = require('express-fileupload'); 
 
-app.use(fileupload())
+app.use(fileupload({
+    createParentPath: true,
+  }))
 // app.use(function(req, res, next) {
 //     var oneof = false;
 //     if(req.headers.origin) {

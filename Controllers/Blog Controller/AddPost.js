@@ -5,7 +5,7 @@ const fs = require('fs');
 const cloudinary = require('../../ImageHandlingFolder/Cloudinary');
 
 const AddPost = async(req,res,next)=>{
-   if(req.files){
+   if(req.files.Image){
    const uploader = await cloudinary.uploader.upload("public/images/"+req.files.Image.name,{
       resource_type:"auto",
       folder:"Blog"
