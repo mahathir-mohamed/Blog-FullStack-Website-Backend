@@ -1,3 +1,5 @@
+const {dirname} = require("path")
+
 const fileUpload = async (req,res,next)=>{
   if(req.files){
   let imageFile;
@@ -6,9 +8,9 @@ const fileUpload = async (req,res,next)=>{
     return res.status(400).send('No files were uploaded.');
   }
   imageFile = req.files.Image;
-  uploadPath = 'public/images/' + imageFile.name;
+  uploadPath = __dirname + 'public/images/' + imageFile.name;
   imageFile.mv(uploadPath, function(err) {
-    if (err)
+    if(err)
       console.log(err);
       return res.status(500).send(err);
     next();
