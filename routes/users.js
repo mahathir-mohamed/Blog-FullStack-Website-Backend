@@ -19,7 +19,7 @@ router.post('/Check-user',TokenVerify);
 router.get("/AdminBlog/:id",AdminBlog);
 router.post("/AddBlog/:id",AppendBlog);
 router.get("/FindUser/:id",FindUser);
-router.post("/Update-Profile/:id",upload.array('Image'),DestroyImage,UpdateUser);
+router.post("/Update-Profile/:id",fileUpload,DestroyImage,UpdateUser);
 // router.post("/Delete-Image/:UserId",DestroyImage);
 
 

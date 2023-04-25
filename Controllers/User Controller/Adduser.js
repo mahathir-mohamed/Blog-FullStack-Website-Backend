@@ -9,25 +9,12 @@ const AddUser = async (req,res)=>{
   console.log(req.files);
   try{
     if(req.files){
-   const uploader = await cloudinary.uploader.upload("public/images/"+req.files.sampleFile.name,{resource_type:"auto",
+   const uploader = await cloudinary.uploader.upload("public/images/"+req.files.Image.name,{resource_type:"auto",
             folder:"Blog"});
-  // if(req.body.Image){
-  //  const uploader = await cloudinary.uploader.upload(req.body.Image,{
-  //     resource_type:"auto",
-  //     folder:"Blog"
-  //  });
     if(uploader.url){
-       fs.unlinkSync("public/images/"+req.files.sampleFile.name);
+       fs.unlinkSync("public/images/"+req.files.Image.name);
     }
-  //  const files = req.files
-  //   for(const file of files){
-  //       const {path}=file
-  //       const newPath = await uploader(path)
-  //       url.push(newPath);
-  //       fs.unlinkSync(path)
-  //   }
-    // console.log(uploader)
-//   const pass = "123";
+
   console.log(req.body.Password);
   console.log(req.body.Email);
   bcrypt.genSalt(10).then((salt)=>{
@@ -43,7 +30,7 @@ const AddUser = async (req,res)=>{
      }
      });
      console.log(User);
-    //  User.save();
+     User.save();
      res.status(200).json({msg:"Succesfully account created"})
   }).catch((err)=>{
     console.error(err);

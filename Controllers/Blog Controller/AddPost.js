@@ -5,11 +5,14 @@ const fs = require('fs');
 const cloudinary = require('../../ImageHandlingFolder/Cloudinary');
 
 const AddPost = async(req,res,next)=>{
-   if(req.body.Image){
-   const uploader = await cloudinary.uploader.upload(req.body.Image,{
+   if(req.files){
+   const uploader = await cloudinary.uploader.upload("public/images/"+req.files.Image.name,{
       resource_type:"auto",
       folder:"Blog"
    });
+   if(uploader.url){
+      fs.unlinkSync("public/images/"+req.files.Image.name);
+   }
    console.log(uploader);
    const blog = new BlogSchema({
       Title:req.body.Title,   

@@ -16,10 +16,10 @@ const DestroyImage =  async(req,res,next)=>{
                 for(let i=0;i<docs.Image.length;i++){
                     cloudinary.uploader.destroy(docs.Image[i].id)
                 }
-                const uploader = await cloudinary.uploader.upload(req.files[0].path,{resource_type:"auto",
+                const uploader = await cloudinary.uploader.upload("public/images/"+req.files.Image.name,{resource_type:"auto",
                folder:"Blog"});
             if(uploader.url){
-                fs.unlinkSync(req.files[0].path);
+                fs.unlinkSync("public/images/"+req.files.Image.name);
             }
                req.Image = {
                   url:uploader.secure_url,
