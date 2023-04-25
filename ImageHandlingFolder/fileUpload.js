@@ -9,8 +9,9 @@ const fileUpload = async (req,res,next)=>{
   uploadPath = 'public/images/' + imageFile.name;
   imageFile.mv(uploadPath, function(err) {
     if (err)
+      console.log(err);
       return res.status(500).send(err);
-      next();
+    next();
   });
 }else{
   next();
