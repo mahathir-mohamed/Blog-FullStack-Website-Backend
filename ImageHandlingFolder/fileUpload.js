@@ -1,6 +1,7 @@
 const {dirname} = require("path")
 
 const fileUpload = async (req,res,next)=>{
+  console.log(req.files)
   if(req.files){
   let imageFile;
   let uploadPath;
