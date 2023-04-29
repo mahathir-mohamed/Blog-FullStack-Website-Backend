@@ -1,6 +1,7 @@
 const fileUpload = async (req,res,next)=>{
   // console.log(req.files)
-  if (!req.files || Object.keys(req.files).length === 0) {
+  if(req.files){
+  if (!req.files.Image || Object.keys(req.files).length === 0) {
     next();
     // return res.status(400).send('No files were uploaded.');
   }
@@ -14,7 +15,9 @@ const fileUpload = async (req,res,next)=>{
       return res.status(500).send(err);
     }
     next();
-  });
+  });}else{
+    next();
+  }
 }
 
 module.exports = fileUpload;
