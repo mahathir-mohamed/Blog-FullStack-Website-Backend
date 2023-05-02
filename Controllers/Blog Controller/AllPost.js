@@ -11,8 +11,9 @@ const AllPost = (req,res)=>{
          console.log(err);
       }else{   
          const result = docs.slice(StartIndex,EndIndex);
-         const totaldocument = docs.length;
-         res.status(200).json({result,TotalPost:totaldocument});
+         const totaldocument = Math.ceil(docs.length/limit);
+         // console.log(docs.length,totaldocument);   
+         res.status(200).json({result,TotalLength:totaldocument});
       }
    }).populate('Author');
 }
