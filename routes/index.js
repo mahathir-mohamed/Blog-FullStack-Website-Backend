@@ -29,6 +29,7 @@ const RemoveMyBlog = require('../middlewares/RemoveMyBlog');
 const RemovelikedBlog = require("../middlewares/RemovelikedBlog");
 const RecommentBlog = require("../Controllers/Blog Controller/RecommentBlog");
 const DestroyBlogImage = require('../ImageHandlingFolder/DestroyBlogImage');
+const AuthorBlogRecomment = require('../Controllers/Blog Controller/AuthorBlogRecomment');
 
 const unlinkAsync = promisify(fs.unlink);
 const fileUpload = require("../ImageHandlingFolder/fileUpload");
@@ -44,5 +45,6 @@ router.get("/MyBlogs/:id",FindMyBlog);
 router.get("/FindPost/:id",FindPost);
 router.get("/RecommentPost/:id",RecommentBlog);
 router.put("/EditPost/:id",fileUpload,DestroyBlogImage,EditPost);
+router.get("/AuthorBlog/:id",AuthorBlogRecomment)
 
 module.exports = router;
